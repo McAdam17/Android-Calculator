@@ -1,0 +1,130 @@
+:root {
+    --light-black: #2d3033;
+    --black: #202124;
+    --white: #e6e8eb;
+    --light-blue: #88b2f5;
+    --blue: #4285f4;
+    --black-backgroud: rgb(14, 14, 15);
+    --gray: #b3b3b3;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 10px;
+}
+
+body {
+    background-color: var(--black-backgroud);
+    position: relative;
+}
+
+.rotate180{
+    transform: rotate(180deg);
+}
+
+.page-title{
+    color: var(--white);
+    font-family: 'Roboto','Courier New', Courier, monospace;
+    font-size: 4rem;
+    text-align: center;
+    margin: 15px auto;
+}
+
+.calculator-container {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 20px;
+    padding-top: 40px;
+    width: 100%;
+}
+
+.calculator {
+    background-color: var(--light-black);
+    border-radius: 7px;
+    -webkit-box-shadow: -1px 2px 11px -2px rgba(48, 80, 128, 0.78); 
+    box-shadow: -1px 2px 11px -2px rgba(48, 80, 128, 0.78); 
+    max-width: 340px;
+    overflow: hidden;
+}
+
+.calculator__header{
+    width: 100%;
+}
+
+.header__input{
+    background-color: var(--light-black);
+    border: none;
+    color: var(--white);
+    text-align: right;
+    margin: 5px 0;
+    padding: 5px;
+    width: 100%;
+}
+
+.input__operations{
+    font-size: 3.2rem;
+    caret-color: var(--light-blue);
+}
+
+.input__result{
+    color: var(--gray);
+    font-size: 1.7rem;
+}
+
+.calculator__operators{
+    display: flex;
+    justify-content: space-between;
+}
+
+.calculator__operators button{
+    background-color: var(--black);
+    border: none;
+    color: var(--white);
+    font-size: 2rem;
+    padding: 17px 5px;
+    position: relative;
+}
+
+.calculator__operators button:hover{
+    background-color: var(--blue);
+    color: var(--white);
+}
+
+.calculator__operators button:after {
+    background: var(--light-black);
+    content: "";
+    display: block;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    opacity: 0;
+    transition: all 0.5s;
+    top: 0;
+    width: 100%;
+}
+
+.calculator__operators button:active:after {
+    opacity: 0.5;
+    transition: all 0.0s;
+}
+
+.operators__numbers{
+    display: grid;
+    width: 70%;
+    grid-template-columns: repeat(3,1fr);
+}
+
+.operators__actions{
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+}
+
+.operators__actions button{
+    color: var(--blue);
+}

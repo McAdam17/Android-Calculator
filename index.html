@@ -1,14 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500&display=swap" rel="stylesheet"> 
     <link rel="stylesheet" href="./styles/main.css">
     <title>Calculator | Android</title>
 </head>
+
 <body>
-    
+    <h1 class="page-title">Calculator</h1>
+    <div class="calculator-container">
+        <div class="calculator">
+            <header class="calculator__header">
+                <input type="text" name="input_operations" id="input_operations"
+                    class="header__input input__operations">
+                <input type="text" name="output_operations" id="output_operations" class="header__input input__result">
+            </header>
+            <div class="calculator__operators">
+                <div class="operators__numbers">
+                    <button>7</button>
+                    <button>8</button>
+                    <button>9</button>
+                    <button>4</button>
+                    <button>5</button>
+                    <button>6</button>
+                    <button>1</button>
+                    <button>2</button>
+                    <button>3</button>
+                    <button>0</button>
+                    <button>.</button>
+                    <button>=</button>
+                </div>
+                <div class="operators__actions">
+                    <button class="rotate180">&#8658;</button>
+                    <button>%</button>
+                    <button>x</button>
+                    <button>-</button>
+                    <button>+</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <script src="./js/index.js"></script>
 </body>
+
 </html>
