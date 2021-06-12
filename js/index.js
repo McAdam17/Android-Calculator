@@ -13,8 +13,10 @@ const getInputs = (function(){
     function checkInputPattern(currentValue){
         const isThereContent = currentValue.length>0
         if(isThereContent){
-            const isInputValid = !!validateInput(currentValue);
+            const res = validateInput(currentValue);
+            const isInputValid = !!res;
             if(isInputValid){
+                screenOutput.value=res;
                 updateScreenState(ScreenStates.VALID);
             }else{
                 updateScreenState(ScreenStates.INVALID);
@@ -64,6 +66,7 @@ const getInputs = (function(){
 
     function drawOperationWithLastResult(operator){
         screenOperation.value = totalResult+''+operator;
+        totalResult=noResultYet;
     }
 
     function isOperator(input){
@@ -80,8 +83,9 @@ const getInputs = (function(){
         const currentValue = screenOperation.value;
         const result = validateInput(currentValue)
         if(!!result && currentValue.length>0){
-            screenOutput.value=result;
+            screenOutput.value='';
             totalResult=result;
+            screenOperation.value=result;
         }else{
             resetScreen(screenOperation);
         }
