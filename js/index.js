@@ -9,7 +9,7 @@ screenOperation.addEventListener('input', () =>{
 function checkPatternOperation(lastValue){
     if(lastValue.length>0){
         if(validateInput(lastValue)){
-            screenOperation.style.boxShadow = '10px 20px 30px green';
+            screenOperation.style.boxShadow = '10px 20px 30px blue';
         }else{
             screenOperation.style.boxShadow= '10px 20px 30px red';
         }
@@ -19,13 +19,20 @@ function checkPatternOperation(lastValue){
 }
 
 function validateInput(value){
-    return /([-+]?[0-9]*\.?[0-9]+[\/\+\-\*])+([-+]?[0-9]*\.?[0-9]+)$|[0-9]+$/.test(value);
+    let res = false;
+    try{
+        res = eval(value);
+    }catch(err){
+        conlog(err);
+    }
+    return res
 }
 
 function handleOperations(){
     const lastValue = screenOperation.value;
-    if(validateInput(lastValue) && lastValue.length>0){
-        // do operations
+    const result = validateInput(lastValue)
+    if(!!result && lastValue.length>0){
+        screenOutput.value=result;
     }else{
         screenOperation.value = '';
         checkPatternOperation('');
@@ -46,6 +53,8 @@ function removeLast(){
     const lastValue = screenOperation.value;
     if(lastValue.length>0){
         screenOperation.value = lastValue.slice(0, -1)
+    }else{
+        screenOutput.value = '';
     }
     checkPatternOperation(screenOperation.value);
 }
@@ -54,4 +63,11 @@ function addData(input){
     const lastValue = screenOperation.value;
     screenOperation.value = lastValue + input;
     checkPatternOperation(screenOperation.value);
+}
+
+function conlog(print){
+    const development = false;
+    if(development){
+        console.log(print);
+    }
 }
