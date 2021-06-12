@@ -16,31 +16,41 @@
     <div class="calculator-container">
         <div class="calculator">
             <header class="calculator__header">
-                <input type="text" name="input_operations" id="input_operations"
-                    class="header__input input__operations">
-                <input type="text" name="output_operations" id="output_operations" class="header__input input__result">
+                <input 
+                    type="text" 
+                    name="input_operations" 
+                    id="input_operations"
+                    class="header__input input__operations" 
+                >
+                <input 
+                    type="text" 
+                    name="output_operations" 
+                    id="output_operations" 
+                    class="header__input input__result" 
+                    readonly
+                >
             </header>
             <div class="calculator__operators">
                 <div class="operators__numbers">
-                    <button>7</button>
-                    <button>8</button>
-                    <button>9</button>
-                    <button>4</button>
-                    <button>5</button>
-                    <button>6</button>
-                    <button>1</button>
-                    <button>2</button>
-                    <button>3</button>
-                    <button>0</button>
-                    <button>.</button>
-                    <button>=</button>
+                    <button onclick="getInputs(7)">7</button>
+                    <button onclick="getInputs(8)">8</button>
+                    <button onclick="getInputs(9)">9</button>
+                    <button onclick="getInputs(4)">4</button>
+                    <button onclick="getInputs(5)">5</button>
+                    <button onclick="getInputs(6)">6</button>
+                    <button onclick="getInputs(1)">1</button>
+                    <button onclick="getInputs(2)">2</button>
+                    <button onclick="getInputs(3)">3</button>
+                    <button onclick="getInputs(0)">0</button>
+                    <button onclick="getInputs('.')">.</button>
+                    <button onclick="getInputs('=')">=</button>
                 </div>
                 <div class="operators__actions">
-                    <button class="rotate180">&#8658;</button>
-                    <button>%</button>
-                    <button>x</button>
-                    <button>-</button>
-                    <button>+</button>
+                    <button class="rotate180" onclick="getInputs('r')">&#8658;</button>
+                    <button onclick="getInputs('/')">%</button>
+                    <button onclick="getInputs('x')">x</button>
+                    <button onclick="getInputs('-')">-</button>
+                    <button onclick="getInputs('+')">+</button>
                 </div>
             </div>
         </div>
