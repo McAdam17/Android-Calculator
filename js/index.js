@@ -2,6 +2,8 @@ const getInputs = (function(){
     const screenOperation = document.getElementById('input_operations');
     const screenOutput = document.getElementById('output_operations');
     const ScreenStates = {VALID:'VALID',INVALID:'INVALID',DEFAULT:'DEFAULT'};
+    const noResultYet = '&';
+    let totalResult = noResultYet;
 
     screenOperation.addEventListener('input', () =>{
         const currentValue = screenOperation.value;
@@ -36,6 +38,10 @@ const getInputs = (function(){
         let res = false;
         try{
             res = eval(value);
+            const hasDecimals = !!((res+'').split('.')[1]);
+            if(hasDecimals){
+                res = res.toFixed(2);
+            }
         }catch(err){
             conlog(err);
         }
@@ -45,11 +51,29 @@ const getInputs = (function(){
     function getInputs(input) {
         if(input==='r'){
             removeLast();
+        }else if(input==='c'){
+            clearScreens();
         }else if(input==='='){
             handleOperations();
+        }else if(isOperator(input) && totalResult!=noResultYet){
+            drawOperationWithLastResult(input);
         }else{
             addData(input);
         }
+    }
+
+    function drawOperationWithLastResult(operator){
+        screenOperation.value = totalResult+''+operator;
+    }
+
+    function isOperator(input){
+        return input==='/' || input==='*' || input==='-' || input==='+';
+    }
+
+    function clearScreens(){
+        totalResult=noResultYet;
+        resetScreen(screenOperation);
+        resetScreen(screenOutput);
     }
 
     function handleOperations(){
@@ -57,6 +81,7 @@ const getInputs = (function(){
         const result = validateInput(currentValue)
         if(!!result && currentValue.length>0){
             screenOutput.value=result;
+            totalResult=result;
         }else{
             resetScreen(screenOperation);
         }
@@ -72,7 +97,7 @@ const getInputs = (function(){
         if(lastValue.length>0){
             screenOperation.value = lastValue.slice(0, -1)
         }else{
-            resetScreen(screenOutput);
+            clearScreens();
         }
         checkInputPattern(screenOperation.value);
     }
